@@ -5,6 +5,47 @@
   const mobileMenu = document.getElementById('mobile-menu');
   const themeMeta = document.querySelector('meta[name="theme-color"]');
 
+  // Use the same MuscleMetric mark used across the app/site assets.
+  document.querySelectorAll('.brand-mark').forEach(mark => {
+    mark.innerHTML = '<img src="./favicon.svg" alt="" aria-hidden="true">';
+    const img = mark.querySelector('img');
+    if (img) {
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'contain';
+      img.style.display = 'block';
+    }
+  });
+
+  // Put the founder story before the future roadmap, both on-page and in navigation.
+  const storySection = document.getElementById('story');
+  const coachSection = document.getElementById('coach');
+  if (storySection && coachSection && storySection.parentNode === coachSection.parentNode) {
+    coachSection.parentNode.insertBefore(storySection, coachSection);
+  }
+
+  document.querySelectorAll('nav a[href="#coach"], #mobile-menu a[href="#coach"]').forEach(link => {
+    link.textContent = 'Future Plans';
+  });
+
+  const desktopNav = document.querySelector('.desktop-nav');
+  if (desktopNav) {
+    const storyLink = desktopNav.querySelector('a[href="#story"]');
+    const futureLink = desktopNav.querySelector('a[href="#coach"]');
+    if (storyLink && futureLink) desktopNav.insertBefore(storyLink, futureLink);
+  }
+  if (mobileMenu) {
+    const storyLink = mobileMenu.querySelector('a[href="#story"]');
+    const futureLink = mobileMenu.querySelector('a[href="#coach"]');
+    if (storyLink && futureLink) mobileMenu.insertBefore(storyLink, futureLink);
+  }
+
+  if (coachSection) {
+    const plannedBadge = coachSection.querySelector('.status-pill.planned');
+    if (plannedBadge) plannedBadge.innerHTML = '<span class="dot dot-gold"></span>Future plans · Planned / In development';
+    coachSection.setAttribute('aria-label', 'Future plans');
+  }
+
   const savedTheme = localStorage.getItem('mm-theme');
   const preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = savedTheme || (preferredDark ? 'dark' : 'light');
