@@ -1,0 +1,9 @@
+{
+  "name": "MuscleMetric",
+  "short_name": "MuscleMetric",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#2563EB",
+  "description": "Workout planning, logging and progress analysis in one connected training system."
+}
