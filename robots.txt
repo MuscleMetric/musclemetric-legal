@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://musclemetric.github.io/musclemetric-legal/sitemap.xml
