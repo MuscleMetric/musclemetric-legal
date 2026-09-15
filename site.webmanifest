@@ -1,6 +1,6 @@
 {
-  "name": "MuscleMetric",
-  "short_name": "MuscleMetric",
+  "name": "MuscleMetrics",
+  "short_name": "MuscleMetrics",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#F9FAFB",
