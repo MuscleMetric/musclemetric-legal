@@ -7,9 +7,9 @@
   if (reduceMotion) return;
 
   const staggerGroups = [
-    ['.problem-grid', '.reveal', 70],
-    ['.feature-grid', '.reveal', 70],
-    ['.coach-grid', '.reveal', 65],
+    ['.problem-grid', '.problem-card', 70],
+    ['.feature-grid', '.feature-card', 70],
+    ['.coach-grid', '.coach-card', 65],
     ['.analytics-side', '.analytics-card', 65],
     ['.principles', ':scope > div', 55],
     ['.seo-grid', '.seo-card', 70],
@@ -26,6 +26,7 @@
         items = [];
       }
       items.forEach((item, index) => {
+        item.classList.add('reveal');
         const delay = Math.min(index * Number(step), 320);
         item.style.setProperty('--reveal-delay', `${delay}ms`);
       });
