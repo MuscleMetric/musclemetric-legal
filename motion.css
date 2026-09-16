@@ -1,0 +1,228 @@
+:root{
+  --motion-ease:cubic-bezier(.22,1,.36,1);
+  --motion-ease-soft:cubic-bezier(.16,1,.3,1);
+  --motion-fast:180ms;
+  --motion-base:640ms;
+  --motion-slow:900ms;
+}
+
+/* Progressive enhancement: the site remains fully visible if JS is unavailable. */
+html.motion-ready .reveal{
+  opacity:0;
+  transform:translate3d(0,20px,0) scale(.992);
+  filter:blur(7px);
+  transition:
+    opacity var(--motion-base) var(--motion-ease),
+    transform var(--motion-base) var(--motion-ease),
+    filter calc(var(--motion-base) + 80ms) var(--motion-ease-soft);
+  transition-delay:var(--reveal-delay,0ms);
+  will-change:opacity,transform,filter;
+}
+html.motion-ready .reveal.is-visible{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  filter:blur(0);
+  will-change:auto;
+}
+
+/* Header arrives quickly and quietly instead of popping into place. */
+html.motion-ready .site-header{
+  animation:mm-nav-in 620ms var(--motion-ease) both;
+}
+
+/* Hero copy reveals in a controlled sequence. */
+html.motion-ready .hero-copy.reveal{
+  opacity:1;
+  transform:none;
+  filter:none;
+  transition:none;
+}
+html.motion-ready .hero-copy.reveal>*{
+  opacity:0;
+  transform:translate3d(0,15px,0);
+  filter:blur(6px);
+}
+html.motion-ready .hero-copy.reveal.is-visible>*{
+  animation:mm-soft-in 760ms var(--motion-ease) both;
+}
+html.motion-ready .hero-copy.reveal.is-visible>*:nth-child(1){animation-delay:80ms}
+html.motion-ready .hero-copy.reveal.is-visible>*:nth-child(2){animation-delay:145ms}
+html.motion-ready .hero-copy.reveal.is-visible>*:nth-child(3){animation-delay:215ms}
+html.motion-ready .hero-copy.reveal.is-visible>*:nth-child(4){animation-delay:285ms}
+html.motion-ready .hero-copy.reveal.is-visible>*:nth-child(5){animation-delay:355ms}
+
+/* Product visual is deliberately slower than the headline. */
+html.motion-ready .hero-visual.reveal{
+  opacity:1;
+  transform:none;
+  filter:none;
+  transition:none;
+}
+html.motion-ready .hero-visual.reveal .phone-hero{
+  opacity:0;
+  filter:blur(9px);
+}
+html.motion-ready .hero-visual.reveal.is-visible .phone-hero{
+  animation:mm-visual-in 980ms var(--motion-ease-soft) 220ms both;
+}
+html.motion-ready .hero-visual.reveal .ambient-glow{
+  opacity:0;
+  transform:scale(.84);
+}
+html.motion-ready .hero-visual.reveal.is-visible .ambient-glow{
+  animation:mm-glow-in 1200ms var(--motion-ease-soft) 120ms both,mm-glow-breathe 7s ease-in-out 1.4s infinite alternate;
+}
+html.motion-ready .hero-visual.reveal .metric-float{
+  opacity:0;
+  transform:translate3d(0,14px,0) scale(.96);
+  filter:blur(6px);
+}
+html.motion-ready .hero-visual.reveal.is-visible .metric-float{
+  animation:mm-float-in 700ms var(--motion-ease) both;
+}
+html.motion-ready .hero-visual.reveal.is-visible .metric-float-a{animation-delay:470ms}
+html.motion-ready .hero-visual.reveal.is-visible .metric-float-b{animation-delay:560ms}
+html.motion-ready .hero-visual.reveal.is-visible .metric-float-c{animation-delay:650ms}
+
+/* Draw charts only when their containing block is revealed. */
+html.motion-ready .reveal .chart-line{
+  stroke-dasharray:1000;
+  stroke-dashoffset:1000;
+}
+html.motion-ready .reveal.is-visible .chart-line{
+  animation:mm-line-draw 1350ms var(--motion-ease-soft) 220ms forwards;
+}
+html.motion-ready .reveal .chart-area{opacity:0}
+html.motion-ready .reveal.is-visible .chart-area{animation:mm-area-in 800ms ease 520ms forwards}
+html.motion-ready .reveal .chart-card circle{opacity:0}
+html.motion-ready .reveal.is-visible .chart-card circle{animation:mm-dot-in 360ms var(--motion-ease) 1250ms forwards}
+
+/* Progress values and history bars grow from their baseline. */
+html.motion-ready .reveal .mini-progress i{
+  transform:scaleX(0);
+  transform-origin:left center;
+}
+html.motion-ready .reveal.is-visible .mini-progress i{
+  animation:mm-progress-grow 820ms var(--motion-ease) 260ms forwards;
+}
+html.motion-ready .reveal .history-bars i{
+  transform:scaleY(0);
+  transform-origin:center bottom;
+}
+html.motion-ready .reveal.is-visible .history-bars i{
+  animation:mm-bar-grow 660ms var(--motion-ease) forwards;
+}
+html.motion-ready .reveal.is-visible .history-bars i:nth-child(1){animation-delay:180ms}
+html.motion-ready .reveal.is-visible .history-bars i:nth-child(2){animation-delay:230ms}
+html.motion-ready .reveal.is-visible .history-bars i:nth-child(3){animation-delay:280ms}
+html.motion-ready .reveal.is-visible .history-bars i:nth-child(4){animation-delay:330ms}
+html.motion-ready .reveal.is-visible .history-bars i:nth-child(5){animation-delay:380ms}
+html.motion-ready .reveal.is-visible .history-bars i:nth-child(6){animation-delay:430ms}
+
+/* Interactive UI should feel responsive, not animated for animation's sake. */
+.button,.icon-button,.feature-card,.problem-card,.coach-card,.analytics-card,.seo-card,.seo-link-card,.flow-step,.principles>div,.journey-step,.metric-float{
+  transition:
+    transform var(--motion-fast) ease,
+    box-shadow 240ms ease,
+    border-color 240ms ease,
+    background-color 240ms ease,
+    color var(--motion-fast) ease;
+}
+@media (hover:hover) and (pointer:fine){
+  .feature-card:hover,.problem-card:hover,.coach-card:hover,.analytics-card:hover,.seo-card:hover,.seo-link-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 50px rgba(15,23,42,.10);
+    border-color:color-mix(in srgb,var(--blue) 24%,var(--border));
+  }
+  html[data-theme="dark"] .feature-card:hover,
+  html[data-theme="dark"] .problem-card:hover,
+  html[data-theme="dark"] .coach-card:hover,
+  html[data-theme="dark"] .analytics-card:hover,
+  html[data-theme="dark"] .seo-card:hover,
+  html[data-theme="dark"] .seo-link-card:hover{
+    box-shadow:0 18px 50px rgba(0,0,0,.28);
+  }
+  .journey-step:hover,.flow-step:hover,.principles>div:hover{transform:translateY(-2px)}
+  .button:hover{transform:translateY(-2px)}
+  .button:active,.icon-button:active{transform:scale(.98)}
+}
+
+/* Smooth smaller state changes. */
+.mobile-menu:not([hidden]){animation:mm-menu-in 280ms var(--motion-ease) both}
+.faq-list details[open] p{animation:mm-faq-in 320ms var(--motion-ease) both}
+.journey-ui{animation:mm-journey-in 420ms var(--motion-ease) both}
+.methodology-modal[open]{animation:mm-modal-in 280ms var(--motion-ease) both}
+.methodology-modal[open]::backdrop{animation:mm-backdrop-in 220ms ease both}
+
+/* Focus remains crisp while the rest of the interface uses softer movement. */
+.button:focus-visible,.icon-button:focus-visible,.journey-step:focus-visible,.faq-list summary:focus-visible,.seo-link-card:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--blue) 36%,transparent);
+  outline-offset:3px;
+}
+
+@keyframes mm-nav-in{
+  from{opacity:0;transform:translateY(-8px);filter:blur(5px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}
+@keyframes mm-soft-in{
+  from{opacity:0;transform:translate3d(0,15px,0);filter:blur(6px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}
+@keyframes mm-visual-in{
+  from{opacity:0;filter:blur(9px)}
+  to{opacity:1;filter:blur(0)}
+}
+@keyframes mm-glow-in{
+  from{opacity:0;transform:scale(.84)}
+  to{opacity:1;transform:scale(1)}
+}
+@keyframes mm-glow-breathe{
+  from{opacity:.78;transform:scale(.98)}
+  to{opacity:1;transform:scale(1.035)}
+}
+@keyframes mm-float-in{
+  from{opacity:0;transform:translate3d(0,14px,0) scale(.96);filter:blur(6px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}
+@keyframes mm-line-draw{to{stroke-dashoffset:0}}
+@keyframes mm-area-in{from{opacity:0}to{opacity:1}}
+@keyframes mm-dot-in{from{opacity:0;transform:scale(.5);transform-origin:center}to{opacity:1;transform:scale(1)}}
+@keyframes mm-progress-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes mm-bar-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes mm-menu-in{from{opacity:0;transform:translateY(-8px);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes mm-faq-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@keyframes mm-journey-in{from{opacity:0;transform:translateY(7px);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes mm-modal-in{from{opacity:0;transform:translateY(10px) scale(.985);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes mm-backdrop-in{from{opacity:0}to{opacity:1}}
+
+@media (max-width:720px){
+  html.motion-ready .reveal{transform:translate3d(0,14px,0);filter:blur(5px)}
+  html.motion-ready .reveal.is-visible{transform:none;filter:blur(0)}
+  html.motion-ready .hero-copy.reveal>*{transform:translate3d(0,11px,0);filter:blur(4px)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.motion-ready .site-header,
+  html.motion-ready .hero-copy.reveal>*,
+  html.motion-ready .hero-visual.reveal .phone-hero,
+  html.motion-ready .hero-visual.reveal .ambient-glow,
+  html.motion-ready .hero-visual.reveal .metric-float,
+  html.motion-ready .reveal,
+  html.motion-ready .reveal .chart-line,
+  html.motion-ready .reveal .chart-area,
+  html.motion-ready .reveal .chart-card circle,
+  html.motion-ready .reveal .mini-progress i,
+  html.motion-ready .reveal .history-bars i,
+  .mobile-menu:not([hidden]),
+  .faq-list details[open] p,
+  .journey-ui,
+  .methodology-modal[open],
+  .methodology-modal[open]::backdrop{
+    animation:none!important;
+    transition:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    stroke-dashoffset:0!important;
+  }
+}
