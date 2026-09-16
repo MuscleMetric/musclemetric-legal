@@ -1,12 +1,14 @@
-# MuscleMetrics — Official Website
+# MuscleMetric — Official Website
 
-This repository powers the official public website for **MuscleMetrics**, a workout planning, logging and progress-analysis app.
+This repository powers the official public website for **MuscleMetric**, a workout planning, logging and progress-analysis app.
 
 **Website:** https://musclemetric.github.io/musclemetric-legal/
 
 **iPhone App Store:** https://apps.apple.com/us/app/musclemetrics/id6755702103
 
-> The repository URL retains the older singular `musclemetric-legal` path. The official product name is **MuscleMetrics**.
+**Instagram:** https://www.instagram.com/muscle.metric
+
+> The official product name is **MuscleMetric**. The App Store URL currently uses the plural `musclemetrics` slug; older plural references should be treated as the same product entity.
 
 ## Public pages
 
