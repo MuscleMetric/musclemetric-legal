@@ -18,6 +18,7 @@ This repository powers the official public website for **MuscleMetric**, a gym w
 - Workout logger: https://musclemetric.github.io/musclemetric-legal/workout-logger.html
 - Progress tracking: https://musclemetric.github.io/musclemetric-legal/progress-tracking.html
 - Training history: https://musclemetric.github.io/musclemetric-legal/training-history.html
+- Guide — tracking sets, reps and weight: https://musclemetric.github.io/musclemetric-legal/track-sets-reps-weight.html
 - Privacy Policy: https://musclemetric.github.io/musclemetric-legal/privacy.html
 - Terms & Conditions: https://musclemetric.github.io/musclemetric-legal/terms.html
 
@@ -33,5 +34,6 @@ The site includes:
 - `llms.txt`
 - A custom `404.html`
 - A broad gym workout tracker hub plus focused planner, logger, history and progress pages for real search intent
+- An educational guide targeting informational workout-logging queries around sets, reps and weight
 
 Current search-indexing and AEO work is tracked in the main frontend project issues.
