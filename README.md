@@ -1,6 +1,6 @@
 # MuscleMetric — Official Website
 
-This repository powers the official public website for **MuscleMetric**, a workout planning, logging and progress-analysis app.
+This repository powers the official public website for **MuscleMetric**, a gym workout tracker for iPhone focused on workout planning, fast set logging, training history and progress analysis.
 
 **Website:** https://musclemetric.github.io/musclemetric-legal/
 
@@ -13,6 +13,7 @@ This repository powers the official public website for **MuscleMetric**, a worko
 ## Public pages
 
 - Homepage: https://musclemetric.github.io/musclemetric-legal/
+- Gym workout tracker: https://musclemetric.github.io/musclemetric-legal/gym-workout-tracker.html
 - Workout planner: https://musclemetric.github.io/musclemetric-legal/workout-planner.html
 - Workout logger: https://musclemetric.github.io/musclemetric-legal/workout-logger.html
 - Progress tracking: https://musclemetric.github.io/musclemetric-legal/progress-tracking.html
@@ -31,6 +32,6 @@ The site includes:
 - `sitemap.xml`
 - `llms.txt`
 - A custom `404.html`
-- Focused product pages for real search intent
+- A broad gym workout tracker hub plus focused planner, logger, history and progress pages for real search intent
 
 Current search-indexing and AEO work is tracked in the main frontend project issues.
